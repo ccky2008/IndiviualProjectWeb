@@ -1,0 +1,102 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Add Question</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/question.css" rel="stylesheet">
+	</head>
+	<body>
+   
+		<div class="container">
+		  	<div class="col-md-11">
+			<form class="form-horizontal" id="form" data-toggle="validator">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="question">Question:</label>
+					<div class="col-sm-9">          
+						<input type="text" class="form-control" id="question" placeholder="put your question here" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="answerType">Question Type:</label>
+					<div class="btn-group" role="group" aria-label="...">
+						<button type="button" class="btn btn-default"  id="chinese" value="Chinese">Chinese</button>
+						<button type="button" class="btn btn-default"  id="english" value="English">English</button>
+						<button type="button" class="btn btn-default"  id="math" value="Math">Math</button>
+						<button type="button" class="btn btn-default"  id="other" value="Other">Other</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="questionDifficulty">Question Difficulty:</label>
+					<button type="button" class="btn btn-primary colorBtn" value="Easy">Easy</button>
+					<button type="button" class="btn btn-warning colorBtn" value="Medium">Medium</button>
+					<button type="button" class="btn btn-danger colorBtn" value="Hard">Hard</button>
+				</div>
+				<hr/>
+			
+
+    <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">A1</span>
+      <input type="text" class="form-control" aria-label="..." id="answerOne">
+      <span class="input-group-addon">
+        <input type="checkbox" class="sev_check" aria-label="..." value="One" id="One">
+      </span>
+      </div>
+
+       <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">A2</span>
+      <input type="text" class="form-control" aria-label="..." id="answerTwo">
+      <span class="input-group-addon">
+        <input type="checkbox" class="sev_check" aria-label="..." value="Two" id="Two">
+      </span>
+      </div>
+
+        <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">A3</span>
+      <input type="text" class="form-control" aria-label="..." id="answerThree">
+      <span class="input-group-addon">
+        <input type="checkbox" class="sev_check" aria-label="..." value="Three" id="Three">
+      </span>
+      </div>
+
+       <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">A4</span>
+      <input type="text" class="form-control" aria-label="..." id="answerFour">
+      <span class="input-group-addon">
+        <input type="checkbox" class="sev_check" aria-label="..." value="Four" id="Four">
+      </span>
+      </div>
+
+       <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">A5</span>
+      <input type="text" class="form-control" aria-label="..." id="answerFive">
+      <span class="input-group-addon">
+        <input type="checkbox" class="sev_check" aria-label="..." value="Five" id="Five">
+      </span>
+      </div>
+
+        <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">A6</span>
+      <input type="text" class="form-control" aria-label="..." id="answerSix">
+      <span class="input-group-addon">
+        <input type="checkbox" class="sev_check" aria-label="..." value="Six" id="Six">
+      </span>
+      </div>
+        <div class="input-group">
+          <h6>If you don't need 6 rows, leave it blank</h6>
+        </div>
+
+        <button type="submit" class="btn btn-info" id="submit">Submit</button>
+			</form>
+		  </div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+		<script src="js/multipleQuestion.js"> </script>
+</body>
+</html>

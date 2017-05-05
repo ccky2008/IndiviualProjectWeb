@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Open Question</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/question.css" rel="stylesheet">
+
+<body>
+
+   <div class="container">
+    <div class="col-md-11">
+      <form class="form-horizontal" id="form" data-toggle="validator">
+       <div class="form-group">
+        <label class="control-label col-sm-2" for="question">Question:</label>
+        <div class="col-sm-9">          
+         <input type="text" class="form-control" id="question" placeholder="put your question here" required>
+       </div>
+     </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="answerType">Question Type:</label>
+      <div class="btn-group" role="group" aria-label="...">
+       <button type="button" class="btn btn-default"  id="chinese" value="Chinese">Chinese</button>
+       <button type="button" class="btn btn-default"  id="english" value="English">English</button>
+       <button type="button" class="btn btn-default"  id="math" value="Math">Math</button>
+       <button type="button" class="btn btn-default"  id="other" value="Other">Other</button>
+     </div>
+   </div>
+   <div class="form-group">
+    <label class="control-label col-sm-2" for="questionDifficulty">Question Difficulty:</label>
+    <button type="button" class="btn btn-primary colorBtn" value="Easy">Easy</button>
+    <button type="button" class="btn btn-warning colorBtn" value="Medium">Medium</button>
+    <button type="button" class="btn btn-danger colorBtn"  value="Hard">Hard</button>
+  </div>
+  <hr/>
+
+  <div class="form-group">
+        <label class="control-label col-sm-1" for="answer">Answer(s):</label>
+        <div class="col-sm-11">          
+         <input type="text" class="form-control" id="openquestion" required>
+       </div>
+     </div>
+          <h6>If there is more than one correct answer, enter all possibilities separated by commas</h6>
+        <button type="submit" class="btn btn-info" id="submit">Submit</button>
+  </form>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+  <script src="js/question.js"> </script>
+</body>
+</html>

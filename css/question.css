@@ -1,0 +1,30 @@
+.container {
+	padding: 20px;
+	border: 1px solid black;
+}
+
+hr {
+	border-top: 1px solid black;
+}
+
+.input-group {
+	margin: 10px;
+}
+.selected {
+	color:orange;
+}
+
+.colorBtnSelected {
+	background-color: black;
+}
+
+input > .form-control {
+	z-index: 20;
+}
+
+.center {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}

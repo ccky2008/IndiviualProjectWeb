@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang='en'>
+<head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link href="css/question.css" rel="stylesheet">
+		<title>Open Question Page</title>
+</head>
+
+	<% include ../partials/navbar.html %>'
+
+	<div class="container center">
+		<div class="col-md-11">
+			<form class="form-horizontal" id="form" data-toggle="validator">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="question">Question:</label>
+					<div class="col-sm-9">          
+						<input type="text" class="form-control" id="question" placeholder="put your question here" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="courseCode">Course:</label>
+					<div class="btn-group" role="group" aria-label="...">
+						<% for(var i=0; i<subject.length; i++) {%>
+						<button type="button" class="btn btn-default"  value=<%= subject[i] %> id=<%= subject[i] %>> <%= subject[i] %></button>
+						<% } %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="questionDifficulty">Question Difficulty:</label>
+					<button type="button" class="btn btn-primary colorBtn" value="Easy">Easy</button>
+					<button type="button" class="btn btn-warning colorBtn" value="Medium">Medium</button>
+					<button type="button" class="btn btn-danger colorBtn"  value="Hard">Hard</button>
+				</div>
+				<button type="submit" class="btn btn-info" id="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://1000hz.github.io/bootstrap-validator/dist/validator.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/question.js"></script>
+</body>
+</html>

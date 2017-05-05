@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang='en'>
+<head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Single Question Page</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link href="../css/oneClickCreateQuiz.css" rel="stylesheet">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <link rel="stylesheet" type="text/css" href="../css/bootstrap-clockpicker.min.css">
+	</head>
+
+	<% include ../partials/navbar.html %>'
+	
+   <div class="container">
+     <div class="col-md-8">
+        <form class="form-horizontal" id="form" data-toggle="validator">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="courseCode">Course:</label>
+					<div class="btn-group" role="group" aria-label="...">
+						<% for(var i=0; i<subject.length; i++) {%>
+						<button type="button" class="btn btn-default sub"  value=<%= subject[i] %> id=<%= subject[i] %>> <%= subject[i] %></button>
+						<% } %>
+					</div>
+				</div>
+          <div class="input-group">
+            <label class="control-label slidingLabel" for="subject"> Easy:</label>
+            <input type="number" id="easy" min="0" max="10" value="0" required>
+            <label class="control-label slidingLabel" for="subject"> Medium:</label>
+            <input type="number" id="medium" min="0" max="10" value="0" required>
+            <label class="control-label slidingLabel" for="subject"> Hard</label>
+            <input type="number" id="difficult" min="0" max="10" value="0" required>
+          </div>
+          <div class="input-group">
+            <label class="control-label slidingLabel" for="question">Random Question :</label>
+            <input id="randomQuestion" type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled">
+          </div>
+          <div class="input-group">
+            <label class="control-label slidingLabel" for="question">Random Answer :</label>
+            <input id="randomAnswer" type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled">
+          </div>
+                <!-- Date -->
+				<div class="form-group ">
+				<label class="control-label col-sm-2 requiredField" for="date">
+				Date
+				<span class="asteriskField">
+				*
+				</span>
+				</label>
+				<div class="col-sm-10">
+				<div class="input-group">
+				<div class="input-group-addon">
+				<i class="fa fa-calendar">
+				</i>
+				</div>
+				       <input class="form-control" id="date" name="date" placeholder="DD-MM-YYYY" type="text" required= />
+				</div>
+				</div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+				</div>
+
+                <!-- Time -->
+				<div class="form-group ">
+				<label class="control-label col-sm-2 requiredField" for="date">
+				Time
+				<span class="asteriskField">
+				*
+				</span>
+				</label>
+				<div class="col-sm-10">
+				<div class="input-group">
+				<div class="input-group-addon">
+				<i class="fa fa-clock-o">
+				</i>
+				</div>
+				 <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true">
+				 <input type="text" class="form-control" placeholder="TIME" required>
+				</div>
+				</div>
+				</div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+				</div>
+				<div class="form-group">
+                <label class="control-label slidingLabel" for="subject"> Time min(s):</label>
+                <input type="text" id="timelimit" required>
+                </div>
+        <button type="submit" class="btn btn-info" id="submit">Submit</button>
+        </form>
+     </div>
+   </div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="http://1000hz.github.io/bootstrap-validator/dist/validator.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="../js/oneClickCreateQuiz.js"></script>
+<script type="text/javascript" src="../js/bootstrap-clockpicker.min.js"></script>
+</body>
+</html>

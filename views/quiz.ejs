@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang='en'>
+<head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Quiz</title>
+		<style type="text/css">
+			.card-view {
+    clear: both;
+}
+
+.card-view .title {
+    display: block;
+    width: 30%;
+    float: left;
+}
+
+.card-view .value {
+    display: block;
+    width: 70%;
+    float: right;
+}
+		</style>
+	</head>
+
+	<% include ../partials/navbar.html %>'
+	<div class="container">
+		<table data-toggle="table"
+		data-card-view="true">
+		<thead>
+			<tr>
+				<th data-field="question">Question:</th>
+				<th data-field="type">Type:</th>
+				<th data-field="difficulty">Difficulty:</th>
+				<th data-field="Status">Status:</th>
+				<th data-field="Studentanswer">Student Choice(s):</th>
+				<th data-field="choices">Choices:</th>
+				<th data-field="Correctanswer">Correct Answer:</th>
+			</tr>
+		</thead>
+		<% var correctQuestion = 0; var multipleQuestion = 0 ;%>
+		<% for(var i=0; i<question.length; i++) { %>
+		 <% if(question[i].type == "Open") { %>
+		 <tr>
+			<td><%= question[i].question %></td>
+			<td><%= question[i].type %></td>
+			<td><%= question[i].difficulty %></td>
+			<% if(question[i].isMarked == false) { %>
+			  <td><button class="btn btn-warning fa fa-pencil"></button></td>
+			<% } else {%>
+			  <td><button class="btn btn-default fa fa-check-square-o"></button></td>
+			<% } %>
+			<td><%= question[i].studentAnswer %></td>
+		</tr>
+		 <% } else { %>
+		   <% multipleQuestion++ %>
+		   <tr>
+		   <td><%= question[i].question %></td>
+			<td><%= question[i].type %></td>
+			<td><%= question[i].difficulty %></td>
+		    <% if(question[i].correctAnswer == true) { %>
+		       <% correctQuestion++ %>
+			  <td><button class="btn btn-success fa fa-check"></button></td>
+			<% } else { %>
+			  <td><button class="btn btn-danger fa fa-times"></button></td>
+			<% } %>
+			<td><%= question[i].studentAnswer %></td>
+			<td>
+			    <%for(var x in question[i].numOfAnswer) {%>
+			    <%= question[i].numOfAnswer[x] %><br/>
+				<% } %>
+			</td>
+			<% if(question[i].type == "Single") { %>
+			  <td><%= question[i].numOfAnswer[question[i].answerInt] %></td>
+			<% } else if(question[i].type == "Multiple") { %>
+			<td>
+			   <%for(var y in question[i].answerInt) {%>
+			   <%= question[i].numOfAnswer[question[i].answerInt[y]]%> <br/>
+			   <% } %>
+			</td>
+			  <% } %>
+			</tr>
+			<% } %>
+		 <% } %>
+	</table>
+</div>
+
+<div class="container">
+	<form class="form-horizontal" id="form" data-toggle="validator" >
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Fill in information</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="MultipleChoice">MultipleChoice</label>  
+				<div class="col-md-4">
+					<p class="form-control-static" id="multipleQuestionScore"><%= correctQuestion %>  / <%= multipleQuestion %></p>
+
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="Score">Score</label>  
+				<div class="col-md-6">
+					<input id="score" type="text" placeholder="Score For Long Question" class="form-control input-md" required>
+
+				</div>
+			</div>
+
+			<!-- Textarea -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="Comment">Comment</label>
+				<div class="col-md-6">                     
+					<textarea class="form-control" rows="5" id="comment" placeholder="Leave Your Comment Here!" required></textarea>
+				</div>
+			</div>
+		</fieldset>
+					<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button type="submit" id="submit" class="btn btn-info">Submit</button>
+  </div>
+</div>
+	</form>
+
+</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://1000hz.github.io/bootstrap-validator/dist/validator.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$('#form').validator().on('submit', function (e) {
+		if (e.isDefaultPrevented()) {
+
+		} else {
+		   e.preventDefault();
+           e.stopImmediatePropagation();
+          $.ajax({
+                   type: 'POST',
+                   data: createObject(),
+                   url: '/:courseId/quiz'
+                });
+      }
+     });
+
+	function createObject() {
+		var answerSheet = {};
+		answerSheet.multipleChoice = $('#multipleQuestionScore').text();
+		answerSheet.score = $.trim($("#score").val());
+		answerSheet.comment = $.trim($("#comment").val());
+		answerSheet.courseId = "<%= courseId %>";
+		answerSheet.key = "<%= key %>";
+		return answerSheet;
+	}
+	</script>
+</body>
+</html>

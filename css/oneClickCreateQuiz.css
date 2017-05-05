@@ -1,0 +1,21 @@
+.slidingLabel{
+  padding: 0px 10px 30px 20px;
+}
+
+.marginLabel {
+   margin-left: 35px;
+}
+
+.container{
+  padding: 10px;
+  border: 1px solid black;
+}
+
+h4 {
+  font-weight: bold;
+  color:red;
+}
+
+.selected {
+	color:orange;
+}
